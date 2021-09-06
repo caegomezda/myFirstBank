@@ -13,6 +13,10 @@ export const environment = {
     messagingSenderId: "568817747679",
     appId: "1:568817747679:web:4ab62884699957d01d8b6a",
     measurementId: "G-N9CJM54EJZ"
+  },
+
+  urlConfing:{
+    URL1: "https://mtfirstbank-default-rtdb.firebaseio.com/users-api/"
   }
 };
 

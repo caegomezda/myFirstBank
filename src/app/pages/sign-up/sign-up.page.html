@@ -1,9 +1,50 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>sign-up</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>My First Bank</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+ 
+<ion-content class="ion-padding">
+ 
+  <form [formGroup]="credentialForm">
+    <ion-item>
+      <ion-input
+        placeholder="Email address"
+        formControlName="email"
+        autofocus="true"
+        clearInput="true"
+      ></ion-input>
+    </ion-item>
+    <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+      <span *ngIf="email.errors?.required">Email is required</span>
+      <span *ngIf="email.errors?.email">Email is invalid</span>
+    </div>
+ 
+    <ion-item>
+      <ion-input
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+      clearInput="true"
+    ></ion-input>
+    </ion-item>
+    <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+      <span *ngIf="password.errors?.required">Password is required</span>
+      <span *ngIf="password.errors?.minlength">Password needs to be 6 characters</span>
+    </div>
+    <ion-item>
+      <ion-input
+      placeholder="Password"
+      type="password"
+      formControlName="password2"
+      clearInput="true"
+    ></ion-input>
+    </ion-item>
+    <div *ngIf="(password2.dirty || password2.touched) && password2.errors" class="errors">
+      <span *ngIf="password2.errors?.required">Password is required</span>
+      <span *ngIf="password2.errors?.minlength">Password needs to be 6 characters</span>
+    </div>
+  </form>
+ 
+    <ion-button (click)="signUp()" expand="full">Sing up</ion-button>
 </ion-content>

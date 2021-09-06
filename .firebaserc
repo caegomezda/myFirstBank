@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mtfirstbank": {
+      "hosting": {
+        "app": [
+          "mtfirstbank"
+        ]
+      }
+    }
+  }
+}
