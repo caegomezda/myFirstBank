@@ -26,6 +26,11 @@
   text-decoration: none;
 }
 
+.title{
+  display:flex;
+  flex-direction: row;
+}
+
 ion-header {
 	ion-toolbar ion-title {
 		padding: 0 15px !important;
@@ -48,7 +53,7 @@ ion-header {
 
 		.scroll_container {
 			white-space: nowrap;
-			height: 162px;
+			height: 180px;
 			overflow: hidden;
 			overflow-x: scroll;
 

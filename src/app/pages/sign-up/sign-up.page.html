@@ -1,7 +1,13 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>My First Bank</ion-title>
-  </ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="login" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+    <div class="title">
+      <ion-title>My First Bank</ion-title>
+      <ion-title>Registro</ion-title>
+    </div>
+    </ion-toolbar>
 </ion-header>
  
 <ion-content class="ion-padding">
@@ -9,7 +15,7 @@
   <form [formGroup]="credentialForm">
     <ion-item>
       <ion-input
-        placeholder="Email address"
+        placeholder="Correo"
         formControlName="email"
         autofocus="true"
         clearInput="true"
@@ -22,11 +28,16 @@
  
     <ion-item>
       <ion-input
-      placeholder="Password"
-      type="password"
+      placeholder="Contraseña"
+      [type]="passwordTypeInput_1" 
       formControlName="password"
       clearInput="true"
     ></ion-input>
+    <button  item-end class="btn_eye_icon"  (click)="togglePasswordMode(1)">
+      <div>
+        <ion-icon  [name]="(passwordTypeInput_1 === 'text')?'eye':'eye-off'"></ion-icon>
+      </div>
+    </button>
     </ion-item>
     <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
       <span *ngIf="password.errors?.required">Password is required</span>
@@ -34,11 +45,16 @@
     </div>
     <ion-item>
       <ion-input
-      placeholder="Password"
-      type="password"
+      placeholder="Contraseña"
+      [type]="passwordTypeInput_2" 
       formControlName="password2"
       clearInput="true"
     ></ion-input>
+    <button  item-end class="btn_eye_icon"  (click)="togglePasswordMode(2)">
+      <div>
+        <ion-icon  [name]="(passwordTypeInput_2 === 'text')?'eye':'eye-off'"></ion-icon>
+      </div>
+    </button>
     </ion-item>
     <div *ngIf="(password2.dirty || password2.touched) && password2.errors" class="errors">
       <span *ngIf="password2.errors?.required">Password is required</span>

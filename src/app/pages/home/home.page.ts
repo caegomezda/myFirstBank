@@ -25,7 +25,6 @@ export class HomePage {
   }
 
   account(){
-    console.log("Profile");
     this.router.navigateByUrl('/profile', { replaceUrl: true });
   }
 

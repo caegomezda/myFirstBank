@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -13,6 +13,9 @@ import { StorageService } from '../../services/storage.service';
 })
 export class LoginPage implements OnInit {
   credentialForm: FormGroup;
+  @ViewChild('passwordEyeRegister', { read: ElementRef }) passwordEye: ElementRef;
+  passwordTypeInput  =  'password';
+  iconpassword  =  'eye-off';
 
   constructor(private fb: FormBuilder,
               private router: Router,
@@ -75,6 +78,16 @@ export class LoginPage implements OnInit {
   
   get password() {
     return this.credentialForm.get('password');
+  }
+
+  togglePasswordMode() {
+    this.passwordTypeInput = this.passwordTypeInput === 'text' ? 'password' : 'text';
+    const nativeEl = this.passwordEye.nativeElement.querySelector('input');
+    const inputSelection = nativeEl.selectionStart;
+    nativeEl.focus();
+    setTimeout(() => {
+        nativeEl.setSelectionRange(inputSelection, inputSelection);
+    }, 1);
   }
 
 }

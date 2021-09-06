@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
@@ -11,7 +12,10 @@ import { FirebaseService } from '../../services/firebase.service';
 })
 export class SignUpPage implements OnInit {
   credentialForm: FormGroup;
-
+  @ViewChild('passwordEyeRegister', { read: ElementRef }) passwordEye: ElementRef;
+  passwordTypeInput_1  =  'password';
+  passwordTypeInput_2  =  'password';
+  iconpassword  =  'eye-off';
   constructor(private fb: FormBuilder,
               private router: Router,
               private alertController: AlertController,
@@ -76,6 +80,14 @@ export class SignUpPage implements OnInit {
 
   get password2() {
     return this.credentialForm.get('password2');
+  }
+
+  togglePasswordMode(nPasswaord) {
+    if (nPasswaord === 1) {
+      this.passwordTypeInput_1 = this.passwordTypeInput_1 === 'text' ? 'password' : 'text';
+    }else if (nPasswaord === 2) {
+      this.passwordTypeInput_2 = this.passwordTypeInput_2 === 'text' ? 'password' : 'text';
+    }
   }
 
 }

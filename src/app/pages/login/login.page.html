@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>My First Bank</ion-title>
+    <div class="title">
+      <ion-title>My First Bank</ion-title>
+      <ion-title>Inicio</ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
  
@@ -9,7 +12,7 @@
   <form [formGroup]="credentialForm">
     <ion-item>
       <ion-input
-        placeholder="Email address"
+        placeholder="Correo"
         formControlName="email"
         autofocus="true"
         clearInput="true"
@@ -22,11 +25,16 @@
  
     <ion-item>
       <ion-input
-      placeholder="Password"
-      type="password"
+      placeholder="Contraseña"
+      [type]="passwordTypeInput" 
       formControlName="password"
       clearInput="true"
     ></ion-input>
+    <button  item-end class="btn_eye_icon"  (click)="togglePasswordMode()">
+      <div>
+        <ion-icon  [name]="(passwordTypeInput === 'text')?'eye':'eye-off'"></ion-icon>
+      </div>
+    </button>
     </ion-item>
     <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
       <span *ngIf="password.errors?.required">Password is required</span>
@@ -34,7 +42,7 @@
     </div>
   </form>
  
-    <ion-button (click)="signUp()" expand="full">Sing up</ion-button>
-    <ion-button (click)="signIn()" expand="full" color="secondary">Sing in</ion-button>
+  <ion-button (click)="signIn()" expand="full" color="secondary">Ingreso</ion-button>
+  <ion-button (click)="signUp()" expand="full">Registro</ion-button>
  
 </ion-content>
