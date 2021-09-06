@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class OthersService {
-
+export class UtilitiesService {
+  d = new Date();
   constructor() { }
 
   //Crea aleatoriamente cuentas para nuevos usuarios
@@ -25,5 +25,20 @@ export class OthersService {
   // Retorna un número aleatorio entre min (incluido) y max (excluido)
   getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
+  }
+
+  fechaHoyInv(Ndias){
+    let dd = this.d.getDate() + Ndias;
+    let mm = this.d.getMonth() + 1;
+    let yy = this.d.getFullYear();
+    let myDateString = yy + "-" + mm + "-" +dd
+    if (dd<10 && mm>10) {
+      myDateString = yy + "-" + mm + "-" + "0" + dd
+    } else if (mm<10 && dd>10) {
+      myDateString = yy + "-" + "0" + mm + "-"+dd
+    }else if(dd<10 && mm<10){
+      myDateString = yy + "-" +"0"+ mm + "-" + "0" + dd
+    }
+    return myDateString
   }
 }

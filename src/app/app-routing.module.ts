@@ -31,6 +31,10 @@ const routes: Routes = [
     path: 'statement',
     loadChildren: () => import('./pages/statement/statement.module').then( m => m.StatementPageModule)
   },
+  {
+    path: 'balance',
+    loadChildren: () => import('./pages/balance/balance.module').then( m => m.BalancePageModule)
+  },
 ];
 
 @NgModule({

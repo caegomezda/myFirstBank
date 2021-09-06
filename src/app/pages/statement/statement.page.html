@@ -1,9 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>statement</ion-title>
-  </ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="home" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+	<div class="title">
+		<ion-title>My First Bank</ion-title>
+		<ion-title>Saldos y Moviminetos</ion-title>
+	</div>
+	</ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+	<div class="banner" *ngFor="let item of accounts">
+		<ion-card (click)="accountStatement(item)" >
+			<ion-row>
+				<ion-col size="7">
+					<h3>{{item.numeroCuenta}}</h3>
+					<h3>{{item.banco}}</h3>
+					<h5>{{item.value}}</h5>
+				</ion-col>
+				<ion-col size="5">
+					<h4>{{'Ver Movimientos'}}</h4>
+				</ion-col>
+			</ion-row>
+		</ion-card>
+	</div>
+  <div>
+    <ion-card>
+      <ion-button (click)="addAccount()" expand="block" fill="clear" shape="round">
+        <ion-icon name="add-outline"></ion-icon>
+        Agregar cuenta
+      </ion-button>
+    </ion-card>
+  </div>
 </ion-content>

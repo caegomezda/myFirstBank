@@ -22,25 +22,12 @@ export class AccountPage {
 
   async getAccountInfo(){
     this.itemAccount = await this.storage.getItemAccount();
-    console.log('this.itemAccount',this.itemAccount);
   }
 
   async theApiCall(){
-    let result = await this.apiService.theApiCall();
+    let result = await this.apiService.getAccountData();
     this.accounts = result["accounts"];
-    console.log('this.accounts',this.accounts);
     this.isload = true;
   }
-
-  // getItemAccount(){
-  //   let numeroCuenta = this.itemAccount["NumeroCuenta"];
-  //   for (let index = 0; index < this.accounts.length; index++) {
-  //     if (this.accounts[index]["numeroCuenta"] === numeroCuenta) {
-  //       this.account = this.accounts[index]   
-  //     }
-  //   }
-
-  //   console.log('this.account',this.account);
-  // }
 
 }

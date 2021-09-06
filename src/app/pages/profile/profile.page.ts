@@ -16,7 +16,7 @@ export class ProfilePage{
   }
   
   async theApiCall(){
-    let result = await this.apiService.theApiCall();
+    let result = await this.apiService.getAccountData();
     this.profile = result["profile"];
     this.isload = true;
     console.log('profile',this.profile);

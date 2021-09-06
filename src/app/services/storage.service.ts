@@ -7,6 +7,7 @@ export class StorageService {
   idUser:any;
   token:any;
   item:any;
+  resVerificationEmail:any;
   constructor() { }
   //Guarda id del usuario en firebase para hacer consultas
   saveIdUser(id){
@@ -33,5 +34,13 @@ export class StorageService {
   getItemAccount(){
     console.log('item2',this.item);
     return this.item;
+  }
+
+  saveResVerificationEmail(res){
+    this.resVerificationEmail = res;
+  }
+
+  getResVerificationEmail(){
+    return this.resVerificationEmail;
   }
 }

@@ -7,6 +7,9 @@
       <ion-title><span>My First Bank</span></ion-title>
       <ion-title><span>Menu</span></ion-title>
     </div>
+    <ion-button (click)="signOut()" expand="block" fill="clear" shape="round" slot="end">
+      <ion-icon name="exit-outline"></ion-icon>e
+    </ion-button>
 	</ion-toolbar>
 	<div class="banner">
 		<div *ngIf="isload" class="scroll_container">

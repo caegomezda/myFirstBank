@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="statement" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+	<div class="title">
+		<ion-title>My First Bank</ion-title>
+		<ion-title>Moviminetos</ion-title>
+	</div>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isload" >
+    <ion-list>
+      
+      <ion-item *ngFor="let item of data">
+          <ion-card  class="container">
+          <ion-label color="danger" *ngIf="item.status === 2">
+            Movieminto $ - {{item.value}}
+          </ion-label>
+          <!-- <ion-label [ngStyle]="{'color':item.status===2?'red':'green'}"> -->
+          <ion-label color="success" *ngIf="item.status === 1">
+              Movieminto $   {{item.value}}
+          </ion-label>
+          <ion-label>
+            Fecha: {{item.date}}
+          </ion-label>
+        </ion-card>
+      </ion-item>
+
+    </ion-list>
+  </div>
+</ion-content>

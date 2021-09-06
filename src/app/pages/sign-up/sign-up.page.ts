@@ -42,7 +42,7 @@ export class SignUpPage implements OnInit {
           async (user) => {
             loading.dismiss();
             console.log('user',user);
-            let sendVerifiedResult = await this.firebaseService.sendEmailVerification(email);
+            let sendVerifiedResult = await this.firebaseService.sendVerificationEmail(email);
             console.log('sendVerifiedResult',sendVerifiedResult);
             this.router.navigateByUrl('/login', { replaceUrl: true });
           },
