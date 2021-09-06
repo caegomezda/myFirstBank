@@ -42,10 +42,10 @@ export class FirebaseService {
     let uid = credential.user.uid;
     let accounts = await this.other.accoutGenerator();
     let newForm = {
-      email: email,
-      creationDate:date,
-      accounts: accounts,
-      uid:uid
+        email: email,
+        creationDate:date,
+        accounts: accounts,
+        uid:uid
     }
     let result = await this.apiService.newUser(credential,newForm);
     console.log('result',result);
@@ -65,7 +65,6 @@ export class FirebaseService {
       });
   }
 
- 
   signOut(): Promise<void> {
     return this.afAuth.signOut();
   }

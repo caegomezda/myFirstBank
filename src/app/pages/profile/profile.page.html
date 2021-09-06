@@ -1,9 +1,54 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="home" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My First Bank</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="form" lines="none" *ngIf="isload">
 
+		<ion-card class="ion-padding" lines="none" >
+			<!-- <form #formulario="ngForm" (ngSubmit)="onSubmit($event)"> -->
+
+				<ion-item lines="none">
+					<ion-label>Nombre:
+						<h3  style="white-space: pre-wrap !important;">
+							{{profile.nombre}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Correo:
+						<!-- <ion-input type="email" name="email" [(ngModel)]="profile.email" value={{email}} pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></ion-input> -->
+						<h3>
+							{{profile.email}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Documento:
+						<h3>
+							{{profile.documento}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Celular:
+						<!-- <ion-input type="text" name="phone" [(ngModel)]="profile.phone" value={{infoCliente.phone}} >
+              
+						</ion-input> -->
+            <h3>
+							{{profile.telefono}}
+						</h3>
+					</ion-label>
+				</ion-item>
+			<!-- </form> -->
+		</ion-card>
+	</div>
 </ion-content>

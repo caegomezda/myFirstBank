@@ -40,13 +40,10 @@ export class LoginPage implements OnInit {
         async (res) => {
           if(res.user.emailVerified) {
             loading.dismiss();
-            this.storage.saveIdUser(res.user.uid);
-            const alert = await this.alertController.create({
-              header: 'login exitoso',
-              message: "Disfrute el aplicativo",
-              buttons: ['OK'],
-            });
-            await alert.present();
+            console.log('res.user',res.user);
+            await this.storage.saveIdUser(res.user.uid);
+            await this.storage.saveTokenUser(res.user.getIdToken())
+            this.router.navigateByUrl('/home', { replaceUrl: true });
          } else {
           loading.dismiss();
           console.log("No se ha verificado la cuenta");

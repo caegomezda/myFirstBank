@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+	<ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="login" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+		<ion-title><span>My First Bank</span></ion-title>
+	</ion-toolbar>
+	<div class="banner">
+		<div *ngIf="isload" class="scroll_container">
+			<div class="item_scroll" *ngFor="let item of accounts" >
+					<h4>Tipo de cuenta: {{item.accoutType}}</h4>
+					<h3>{{item.numeroCuenta}}</h3>
+          <h4>Banco: {{item.banco}}</h4>
+			</div>
+		</div>
+	</div>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-row>
+    <ion-col size="4" (click)="account()">
+      <div class="menu_item ion-text-center">
+        <div class="icon_box">
+          <img src="assets/imgs/ic_accounts_act.png">
+        </div>
+        <p>{{'Mi perfil'}}</p>
+      </div>
+    </ion-col>
+    <ion-col size="4" (click)="statement()">
+      <div class="menu_item ion-text-center">
+        <div class="icon_box">
+          <img src="assets/imgs/ic_statement.png">
+        </div>
+        <p>{{'Saldos y movimientos'}}</p>
+      </div>
+    </ion-col>
+    <ion-col size="4" (click)="more()">
+      <div class="menu_item ion-text-center">
+        <div class="icon_box">
+          <img src="assets/imgs/ic_more.png">
+        </div>
+        <p>{{'Otros'}}</p>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>
