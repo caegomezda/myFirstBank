@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true,
+  firebaseConfig:{
+    apiKey: "AIzaSyCTs_8TyyOhK7_hixqxjrfCjRerh9HwghY",
+    authDomain: "mtfirstbank.firebaseapp.com",
+    databaseURL: "https://mtfirstbank-default-rtdb.firebaseio.com",
+    projectId: "mtfirstbank",
+    storageBucket: "mtfirstbank.appspot.com",
+    messagingSenderId: "568817747679",
+    appId: "1:568817747679:web:4ab62884699957d01d8b6a",
+    measurementId: "G-N9CJM54EJZ"
+  }
 };
 
 /*
