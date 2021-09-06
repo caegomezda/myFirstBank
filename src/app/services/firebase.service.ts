@@ -30,7 +30,7 @@ export class FirebaseService {
       this.currentUser = user;      
     });
   }
-
+  // Registro en la base de datos
   async signup({ email, password }): Promise<any> {
     const credential = await this.afAuth.createUserWithEmailAndPassword(
       email,
@@ -50,10 +50,21 @@ export class FirebaseService {
     let result = await this.apiService.newUser(credential,newForm);
     console.log('result',result);
   }
- 
+ //Login con el api
   async signIn({ email, password }) {
     return this.afAuth.signInWithEmailAndPassword(email, password);
   }
+
+  sendEmailVerification(email) {
+    this.afAuth.authState.subscribe(user => {
+        user.sendEmailVerification()
+        .then((res) => {
+          console.log('res',res);
+          console.log('email sent');
+        })
+      });
+  }
+
  
   signOut(): Promise<void> {
     return this.afAuth.signOut();

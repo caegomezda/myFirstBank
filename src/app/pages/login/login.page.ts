@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { ChatService } from '../../services/chat.service';
 import { FirebaseService } from '../../services/firebase.service';
 import { StorageService } from '../../services/storage.service';
 
@@ -19,7 +18,6 @@ export class LoginPage implements OnInit {
               private router: Router,
               private alertController: AlertController,
               private loadingController: LoadingController,
-              private chatService: ChatService,
               private firebaseService : FirebaseService,
               private storage : StorageService
   ) {}
@@ -39,9 +37,26 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
       this.firebaseService.signIn(this.credentialForm.value).then(
-        (res) => {
+        async (res) => {
+          if(res.user.emailVerified) {
+            loading.dismiss();
+            this.storage.saveIdUser(res.user.uid);
+            const alert = await this.alertController.create({
+              header: 'login exitoso',
+              message: "Disfrute el aplicativo",
+              buttons: ['OK'],
+            });
+            await alert.present();
+         } else {
           loading.dismiss();
-          this.storage.saveIdUser(res.user.uid);
+          console.log("No se ha verificado la cuenta");
+          const alert = await this.alertController.create({
+            header: 'Cuenta no verificada',
+            message: "No se ha verificado la cuenta revise su correo o contacte a soporte",
+            buttons: ['OK'],
+          });
+          await alert.present();
+         }
         },
         async (err) => {
           loading.dismiss();

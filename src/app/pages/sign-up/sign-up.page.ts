@@ -28,15 +28,18 @@ export class SignUpPage implements OnInit {
   }
 
   async signUp() {
-    let password = this.credentialForm.value.password
-    let password2 = this.credentialForm.value.password2
+    let password = this.credentialForm.value.password;
+    let password2 = this.credentialForm.value.password2;
+    let  email = this.credentialForm.value.email;
     if (password === password2) {
       const loading = await this.loadingController.create();
       await loading.present();
       this.firebaseService.signup(this.credentialForm.value).then(
-          (user) => {
+          async (user) => {
             loading.dismiss();
             console.log('user',user);
+            let sendVerifiedResult = await this.firebaseService.sendEmailVerification(email);
+            console.log('sendVerifiedResult',sendVerifiedResult);
             this.router.navigateByUrl('/login', { replaceUrl: true });
           },
           async (err) => {

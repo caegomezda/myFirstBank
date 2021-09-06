@@ -7,7 +7,7 @@ export class OthersService {
 
   constructor() { }
 
-  
+  //Crea aleatoriamente cuentas para nuevos usuarios
   accoutGenerator(){
     let accounts = [];
     let accoutsname = ["Ahorros","Corriente"]

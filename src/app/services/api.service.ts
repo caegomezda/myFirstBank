@@ -14,13 +14,11 @@ export class ApiService {
    }
 
   async newUser(credecial,form){
-    console.log('credecial',credecial);
     let uid = credecial.user.uid;
     let accessToken = credecial.user._delegate.accessToken
     const apiUrl = `${this.url1}${uid}.json?auth=${accessToken}`;
     let json = form
     json = JSON.stringify(json);
-    
     return this.http.post(`${apiUrl}`, json, this.httpOptions).pipe(map( data => data)).toPromise();
   }
 }
