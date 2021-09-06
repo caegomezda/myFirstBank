@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomePage {
   accounts:any;
   isload:Boolean = false;
   constructor(private apiService : ApiService,
-              private router : Router) {}
+              private router : Router,
+              private storage : StorageService) {}
 
   ionViewWillEnter(){
     this.theApiCall();
@@ -34,6 +36,12 @@ export class HomePage {
 
   statement(){
     console.log("STATMENT");
+  }
+
+  async goAccount(item){
+    console.log('item',item);
+    await this.storage.saveItemAccount(item);
+    this.router.navigateByUrl('/account', { replaceUrl: true });
   }
 
 }

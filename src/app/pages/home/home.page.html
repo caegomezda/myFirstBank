@@ -10,7 +10,7 @@
 	</ion-toolbar>
 	<div class="banner">
 		<div *ngIf="isload" class="scroll_container">
-			<div class="item_scroll" *ngFor="let item of accounts" >
+			<div class="item_scroll" *ngFor="let item of accounts" (click)="goAccount(item)">
 					<h4>Tipo de cuenta: {{item.accoutType}}</h4>
 					<h3>{{item.numeroCuenta}}</h3>
           <h4>Banco: {{item.banco}}</h4>

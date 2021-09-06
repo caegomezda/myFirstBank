@@ -1,0 +1,49 @@
+<ion-header>
+	<ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="home" icon="arrow-back-outline" mode="md"></ion-back-button>
+    </ion-buttons>
+    <div class="title">
+      <ion-title><span>My First Bank</span></ion-title>
+      <ion-title><span>Cuenta</span></ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form" lines="none" *ngIf="isload">
+		<ion-card class="ion-padding" lines="none" >
+				<ion-item lines="none">
+					<ion-label>Numero de cuenta:
+						<h3  style="white-space: pre-wrap !important;">
+							{{itemAccount.numeroCuenta}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Banco:
+						<h3>
+							{{itemAccount.banco}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Tipo de cuenta:
+						<h3>
+							{{itemAccount.accoutType}}
+						</h3>
+					</ion-label>
+				</ion-item>
+				
+				<ion-item lines="none">
+					<ion-label>Saldo Disponible:
+            <h3>
+							{{itemAccount.value}}
+						</h3>
+					</ion-label>
+				</ion-item>
+		</ion-card>
+	</div>
+</ion-content>

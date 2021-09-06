@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class StorageService {
   idUser:any;
   token:any;
+  item:any;
   constructor() { }
   //Guarda id del usuario en firebase para hacer consultas
   saveIdUser(id){
@@ -17,10 +18,20 @@ export class StorageService {
   }
 
   saveTokenUser(token){
-    this.token = token
+    this.token = token;
   }
 
   getToken(){
-    return this.token
+    return this.token;
+  }
+
+  saveItemAccount(item){
+    console.log('item',item);
+    this.item = item;
+  }
+
+  getItemAccount(){
+    console.log('item2',this.item);
+    return this.item;
   }
 }
